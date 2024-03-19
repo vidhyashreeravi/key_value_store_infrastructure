@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: huey-consumer-l
+spec:
+  template:
+    metadata:
+      labels:
+        app: huey-consumer
+    spec:
+      containers:
+      - name: huey-consumer
+        image: fastapi-app:35
+        command: ["huey_consumer.py", "tasks.huey"]
+      restartPolicy: Never
